@@ -16,7 +16,7 @@ const Log = (stack, level, packageName, message) => __awaiter(void 0, void 0, vo
         stack,
         level,
         package: packageName,
-        message
+        message: message.length > 48 ? message.substring(0, 45) + '...' : message
     };
     try {
         const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;

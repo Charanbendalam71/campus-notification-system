@@ -14,7 +14,7 @@ export const Log = async (
     stack,
     level,
     package: packageName,
-    message
+    message: message.length > 48 ? message.substring(0, 45) + '...' : message
   };
 
   try {
