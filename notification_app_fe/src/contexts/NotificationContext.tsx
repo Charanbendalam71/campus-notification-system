@@ -64,9 +64,18 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
       // Merge and sort
       setNotifications(prev => {
         const merged = [...prev];
-        response.data.forEach((n: Notification) => {
-          if (!merged.find(existing => existing.id === n.id)) {
-            merged.push({ ...n, isRead: false });
+        const apiNotifications = response.data.notifications || [];
+        
+        apiNotifications.forEach((n: any) => {
+          const mappedNotif: Notification = {
+            id: n.ID || n.id,
+            type: n.Type || n.type,
+            message: n.Message || n.message,
+            timestamp: n.Timestamp || n.timestamp,
+            isRead: false
+          };
+          if (!merged.find(existing => existing.id === mappedNotif.id)) {
+            merged.push(mappedNotif);
           }
         });
         return sortNotifications(merged);
