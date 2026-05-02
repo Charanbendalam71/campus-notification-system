@@ -27,20 +27,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return;
         }
 
-        Log('frontend', 'info', 'auth', 'Attempting registration/login');
-        const regRes = await apiClient.post('/register', {
+        // Registration already completed successfully via backend!
+        // Using the credentials generated for this account:
+        const clientID = '70181ca9-3ca5-4deb-913e-5263f15374d8';
+        const clientSecret = 'JxAWmTWSNtzXRMFz';
+        
+        Log('frontend', 'info', 'auth', 'Attempting login');
+
+
+        // Auth
+        const authRes = await apiClient.post('/auth', {
           email: 'charansiv53@gmail.com',
           name: 'Charan Bendalam',
           mobileNo: '9014741272',
           githubUsername: 'Charanbendalam71',
           rollNo: 'AP23110011249',
-          accessCode: 'QkbpxH'
-        });
-
-        const { clientID, clientSecret } = regRes.data;
-
-        // Auth
-        const authRes = await apiClient.post('/auth', {
+          accessCode: 'QkbpxH',
           clientID,
           clientSecret,
         });
