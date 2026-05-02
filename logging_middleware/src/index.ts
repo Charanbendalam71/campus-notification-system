@@ -18,11 +18,17 @@ export const Log = async (
   };
 
   try {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json'
+    };
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     const response = await fetch(LOG_API_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers,
       body: JSON.stringify(payload)
     });
 

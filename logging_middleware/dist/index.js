@@ -19,11 +19,16 @@ const Log = (stack, level, packageName, message) => __awaiter(void 0, void 0, vo
         message
     };
     try {
+        const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
         const response = yield fetch(LOG_API_URL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers,
             body: JSON.stringify(payload)
         });
         if (!response.ok) {

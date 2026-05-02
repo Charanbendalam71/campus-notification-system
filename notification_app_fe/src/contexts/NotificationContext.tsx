@@ -56,7 +56,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     setLoading(true);
     try {
       Log('frontend', 'info', 'api', `Fetching notifications. Page: ${page}`);
-      const params: any = { page, limit: 20 };
+      const params: any = { page, limit: 10 };
       if (type) params.notification_type = type;
 
       const response = await apiClient.get('/notifications', { params });
