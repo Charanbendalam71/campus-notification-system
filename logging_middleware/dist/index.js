@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Log = void 0;
-const LOG_API_URL = 'http://20.207.122.201/evaluation-service/logs';
+const LOG_API_URL = '/api/evaluation-service/logs';
 const Log = (stack, level, packageName, message) => __awaiter(void 0, void 0, void 0, function* () {
     const payload = {
         stack,

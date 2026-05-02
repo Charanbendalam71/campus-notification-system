@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Log } from 'logging_middleware';
 
-const API_BASE_URL = 'http://20.207.122.201/evaluation-service';
+const API_BASE_URL = '/api/evaluation-service';
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
